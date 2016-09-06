@@ -1,9 +1,10 @@
 #!/bin/bash
 
-docker run \
+sudo docker run \
     -it \
     --rm \
-    --privileged \
+    -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+    --cap-add SYS_ADMIN --security-opt seccomp=unconfined \
+    -h test01 \
     --name test01 \
-    test01 \
-    bash
+    xlinux/web-incron-demo
