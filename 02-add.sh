@@ -1,4 +1,4 @@
 #!/bin/bash
 
-apt-get install -y \
-    curl mc
+cd $HOME
+apt-get install -y $(cat packages2install.txt)
