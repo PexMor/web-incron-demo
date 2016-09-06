@@ -13,6 +13,4 @@ sudo docker run \
     $OPTS \
     -h test01 \
     --name test01 \
-    test01 \
-
-#    systemd.unit=emergency.service
+    test01

@@ -17,7 +17,31 @@ rm -f /lib/systemd/system/plymouth*
 rm -f /lib/systemd/system/systemd-update-utmp*
 
 echo -ne "$Green"
-echo -n "Green color test"
+echo -n "Green color"
 echo -ne "$Blue"
-echo -n "Green color test"
+echo -n " Blue color"
+echo -ne "$Yellow"
+echo -n " test"
 echo -e "$Color_Off"
+
+cat >/etc/mosquitto/conf.d/websock.conf <<DATA
+# security restrictions for mqtt protocol
+bind_address 127.0.0.1
+port 1883
+
+# besides localhost listen also on vpn address
+# listener 1883 192.168.1.34
+
+# due to issue websocket cannot be bound to ip address
+# has to be protected by firewall
+# version 1.4.9 should have fixed this:
+# https://github.com/eclipse/mosquitto/issues/170
+listener 9001 127.0.0.1
+protocol websockets
+
+password_file /etc/mosquitto/mosquitto.pwd
+DATA
+
+echo -n >/etc/mosquitto/mosquitto.pwd
+mosquitto_passwd -b /etc/mosquitto/mosquitto.pwd web pass
+

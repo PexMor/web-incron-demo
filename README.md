@@ -14,6 +14,8 @@ docker pull xlinux/web-incron-demo
 sudo docker run \
     -it \
     --rm \
+    -p 10080:80 \
+    -p 10443:443 \
     -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
     --cap-add SYS_ADMIN --security-opt seccomp=unconfined \
     -h test01 \
