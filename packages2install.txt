@@ -33,3 +33,4 @@ openssl
 less
 jq
 build-essential
+isync
